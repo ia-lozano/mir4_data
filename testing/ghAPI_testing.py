@@ -12,7 +12,7 @@ df_clean = df[["power", "price"]]
 
 print(df_clean.head())
 
-df_clean.to_csv("clean_file", index=False)
+df_clean.to_csv("testing/clean_file.csv", index=False)
 
 commands = [
     ["git", "add", "."],
