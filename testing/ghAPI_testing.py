@@ -12,6 +12,8 @@ df_clean = df[["power", "price"]]
 
 print(df_clean.head())
 
+df_clean.to_csv
+
 commands = [
     ["git", "add", "."],
     ["git", "commit", "-m", "updating"],
