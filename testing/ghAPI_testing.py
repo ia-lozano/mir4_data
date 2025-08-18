@@ -12,7 +12,7 @@ df_clean = df[["power", "price"]]
 
 print(df_clean.head())
 
-df_clean.to_csv
+df_clean.to_csv("clean_file", index=False)
 
 commands = [
     ["git", "add", "."],
@@ -22,6 +22,7 @@ commands = [
 
 for cmd in commands:
     subprocess.run(cmd)
+
 
 
 
