@@ -29,9 +29,15 @@ print("df400:", df400.shape)
 print("df450:", df450.shape)
 print("df500:", df500.shape)
 
-def remove_outliers_zscore(df, col="price", threshold=2):
-    z = np.abs(stats.zscore(df[col]))
-    return df[z < threshold]
+def remove_outliers_zscore(df, col="price", threshold=1.5):
+    if df.empty:
+        return df
+    Q1 = df[col].quantile(0.25)
+    Q3 = df[col].quantile(0.75)
+    IQR = Q3 - Q1
+    lower = Q1 - threshold * IQR
+    upper = Q3 + threshold * IQR
+    return df[(df[col] >= lower) & (df[col] <= upper)]
 
 df100_clean = remove_outliers_zscore(df100, "price", threshold=3)
 df150_clean = remove_outliers_zscore(df150, "price", threshold=3)
