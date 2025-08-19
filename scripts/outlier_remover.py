@@ -29,7 +29,7 @@ print("df400:", df400.shape)
 print("df450:", df450.shape)
 print("df500:", df500.shape)
 
-def remove_outliers_zscore(df, col="price", threshold=2.5):
+def remove_outliers_zscore(df, col="price", threshold=2):
     z = np.abs(stats.zscore(df[col]))
     return df[z < threshold]
 
